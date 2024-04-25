@@ -22,7 +22,7 @@ fields:
     default: Simples
     name: Tipo de mensagem
     description: Escolha o tipo de mensagem (Simples, simplesmente fala, ou Anúncio, emite um toque de alerta antes de falar)
-#    required: true
+    required: true
   volume:
     selector:
       number:
@@ -32,6 +32,7 @@ fields:
     default: 0.8
     name: Volume
     description: Escolha o volume do anúncio (padrão 80%)
+    required: true
   onde_anunciar:
     selector:
       entity:
@@ -59,7 +60,6 @@ sequence:
     data:
       message: "{{ mensagem }}"
       data:
-#        type: announce
         type: "{{ tipo_mensagem }}"
       target: "{{ onde_anunciar }}"
   - delay:
