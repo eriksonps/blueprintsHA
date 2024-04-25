@@ -1,6 +1,6 @@
 blueprint:
   name: Anunciar via Alexa
-  description: Anuncia em todas as caixas Echo selecionadas
+  description: Anuncia nas caixas Echo selecionadas
   domain: script
 mode: queued
 fields:
@@ -10,17 +10,18 @@ fields:
     name: Mensagem
     description: O que anunciar?
     required: true
-  onde_anunciar:
+  tipo_mensagem:
     selector:
-      entity:
-        filter:
-          - integration: alexa_media
-            domain: media_player
-        multiple: true
-    name: Onde Anunciar
-    required: true
+      select:
+        options:
+          - label: TTS
+            value: tts
+          - label: Anúncio
+            value: announce
     default: []
-    description: Escolha as Alexas
+    name: Tipo de mensagem
+    description: Escolha o tipo de mensagem (TTS, simplesmente fala, ou Anúncio, emite um alerta antes de falar)
+    required: true
   volume:
     selector:
       number:
@@ -30,6 +31,17 @@ fields:
     default: 0.8
     name: Volume
     description: Escolha o volume do anúncio (padrão 80%)
+  onde_anunciar:
+    selector:
+      entity:
+        filter:
+          - integration: alexa_media
+            domain: media_player
+        multiple: true
+    default: []
+    name: Onde Anunciar
+    description: Escolha as Alexas
+    required: true
 sequence:
   - service: media_player.volume_set
     metadata: {}
@@ -47,6 +59,7 @@ sequence:
       message: "{{ mensagem }}"
       data:
         type: announce
+#        type: "{{ tipo_mensagem }}"
       target: "{{ onde_anunciar }}"
   - delay:
       hours: 0
