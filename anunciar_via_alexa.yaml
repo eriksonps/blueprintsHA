@@ -18,7 +18,7 @@ fields:
             value: tts
           - label: Anúncio
             value: announce
-    default: []
+    default: announce
     name: Tipo de mensagem
     description: Escolha o tipo de mensagem (TTS, simplesmente fala, ou Anúncio, emite um alerta antes de falar)
     required: true
@@ -58,8 +58,8 @@ sequence:
     data:
       message: "{{ mensagem }}"
       data:
-        type: announce
-#        type: "{{ tipo_mensagem }}"
+#        type: announce
+        type: "{{ tipo_mensagem }}"
       target: "{{ onde_anunciar }}"
   - delay:
       hours: 0
