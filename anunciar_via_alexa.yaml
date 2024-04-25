@@ -15,13 +15,13 @@ fields:
       select:
         mode: dropdown
         options:
-          - label: TTS
+          - label: Simples
             value: tts
           - label: Anúncio
             value: announce
-    default: announce
+    default: Simples
     name: Tipo de mensagem
-    description: Escolha o tipo de mensagem (TTS, simplesmente fala, ou Anúncio, emite um alerta antes de falar)
+    description: Escolha o tipo de mensagem (Simples, simplesmente fala, ou Anúncio, emite um toque de alerta antes de falar)
     required: true
   volume:
     selector:
