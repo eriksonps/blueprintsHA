@@ -13,6 +13,7 @@ fields:
   tipo_mensagem:
     selector:
       select:
+        mode: dropdown
         options:
           - label: TTS
             value: tts
