@@ -22,7 +22,7 @@ fields:
     default: Simples
     name: Tipo de mensagem
     description: Escolha o tipo de mensagem (Simples, simplesmente fala, ou Anúncio, emite um toque de alerta antes de falar)
-    required: true
+#    required: true
   volume:
     selector:
       number:
